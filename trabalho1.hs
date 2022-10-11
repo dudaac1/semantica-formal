@@ -145,13 +145,13 @@ cbigStep (If b c1 c2, s)
   | otherwise = cbigStep (Seq c2 Skip, s)
 
 cbigStep (While b c, s)
-  | bbigStep (b, s) == True = (Seq c (While b c), s)
+  | bbigStep (b, s) == True = cbigStep (Seq c (While b c), s)
   | otherwise = (Skip, s)
 
-cbigStep (DoWhile c b, s) = (Seq c (While b c), s)
+cbigStep (DoWhile c b, s) = cbigStep (Seq c (While b c), s)
 
 cbigStep (Repeat c b, s)
-  | bbigStep (b, s) == False = (Seq c (Repeat c b), s)
+  | bbigStep (b, s) == False = cbigStep (Seq c (Repeat c b), s)
   | otherwise = (Skip, s)
   
 
