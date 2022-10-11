@@ -2,13 +2,13 @@
 Repositório para armazenar os exercícios referentes a cadeira de Semântica Formal do curso de Ciência da Computação.
 
 # 📁 organização
-## conteúdos
+## 📚 conteúdos
 - **aula 1**: funções, variáveis, tipos de dados
 - **aula 2**: listas
 - **aula 3**: tipos algébricos e árvores
 - **aula 4**: implementar semântica de expressões booleanas
 
-## listas
+## 📝 listas
 - **lista 1**
   - exerc 1: verificar se uma palavra é palindromo;
   - exerc 2: verifica se a soma do comprimento de qualquer dois lados de um triângulo é maior do que o comprimento do terceiro lado;
@@ -40,8 +40,8 @@ Repositório para armazenar os exercícios referentes a cadeira de Semântica Fo
   - exerc 6: refletir (trocar todos os ramos esquerdos e direitos) da árvore;
   - exerc 7: transformar árvore em lista de inteiros (ordem não é importante).
 
-## trabalho
-- **trabalho 1** - implementar uma linguagem imperativa, com expressões aritméticas, booleanas e comandos (IF-ELSE, REPEAT, WHILE, DO-WHILE) usando a Semântica Operacional Big Step.
+## 📑 trabalhos
+- **trabalho 1:** implementar uma linguagem imperativa, com expressões aritméticas, booleanas e comandos (IF-ELSE, REPEAT, WHILE, DO-WHILE) usando a Semântica Operacional Big Step.
 
 ##
 _Desenvolvido por Eduarda A. Carvalho. Setembro/2022._
