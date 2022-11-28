@@ -197,10 +197,10 @@ smallStepC (While b c, s) = (If b (Seq c (While b c)) Skip, s)
 smallStepC (DoWhile c b,s) = (Seq c (While b c), s)
 
 ----------------------
---  INTERPRETADORES
+--  INTERPRETADORES --
 ----------------------
 
--- Expressões Aritméticas:
+-- Expressões Aritméticas
 isFinalE :: E -> Bool
 isFinalE (Num n) = True
 isFinalE _       = False
@@ -214,7 +214,6 @@ isFinalB TRUE    = True
 isFinalB FALSE   = True
 isFinalB _       = False
 
--- Descomentar quanto a função smallStepB estiver implementada:
 interpretadorB :: (B,Memoria) -> (B, Memoria)
 interpretadorB (b,s) = if (isFinalB b) then (b,s) else interpretadorB (smallStepB (b,s))
 
@@ -223,7 +222,6 @@ isFinalC :: C -> Bool
 isFinalC Skip    = True
 isFinalC _       = False
 
--- Descomentar quando a função smallStepC estiver implementada:
 interpretadorC :: (C, Memoria) -> (C, Memoria)
 interpretadorC (c, s) = if (isFinalC c) then (c, s) else interpretadorC (smallStepC (c, s))
 
@@ -231,8 +229,6 @@ interpretadorC (c, s) = if (isFinalC c) then (c, s) else interpretadorC (smallSt
 ----------------------------------------------------
 --------- EXEMPLOS DE PROGRAMAS PARA TESTE ---------
 ----------------------------------------------------
-
---- O ALUNO DEVE IMPLEMENTAR DOIS EXEMPLOS DE PROGRAMA, UM USANDO O IF E OUTRO USANDO O DO WHILE
 
 exSigma2 :: Memoria
 exSigma2 = [("x",3), ("y",0), ("z",0)]
@@ -243,42 +239,34 @@ exSigma3 = [("x",0), ("y",0), ("z",0)]
 exSigma4 :: Memoria
 exSigma4 = [("x",5), ("y",0), ("z",0)]
 
----
---- O progExp1 é um programa que usa apenas a semântica das expressões aritméticas. Esse
---- programa já é possível rodar com a implementação que fornecida:
-
 progExp1 :: E
 progExp1 = Soma (Num 3) (Soma (Var "x") (Var "y"))
 
 progExp2 :: E
 progExp2 = Sub (Num 3) (Soma (Var "x") (Var "y"))
----
---- para rodar:
--- A função smallStepE anda apenas um passo na avaliação da Expressão
 
+---------------------------------
+--------- PARA EXECUTAR ---------
+---------------------------------
+-- A função smallStepE anda apenas um passo na avaliação da Expressão
 -- *Main> smallStepE (progExp1, exSigma)
 -- (Soma (Num 3) (Soma (Num 10) (Var "y")),[("x",10),("temp",0),("y",0)])
-
 -- Note que no exemplo anterior, o (Var "x") foi substituido por (Num 10)
 
 -- Para avaliar a expressão até o final, deve-se usar o interpretadorE:
-
 -- *Main> interpretadorE (progExp1 , exSigma)
 -- (Num 13,[("x",10),("temp",0),("y",0)])
 
 -- *Main> interpretadorE (progExp1 , exSigma2)
 -- (Num 6,[("x",3),("y",0),("z",0)])
 
-
---- Para rodar os próximos programas é necessário primeiro implementar as regras que faltam
---- e descomentar os respectivos interpretadores
-
-
 -- Exemplos de Programas Booleanos:
 teste1 :: B
+-- 3+3 <= 2*3
 teste1 = (Leq (Soma (Num 3) (Num 3))  (Mult (Num 2) (Num 3)))
 
 teste2 :: B
+-- x+3 <= 2*3
 teste2 = (Leq (Soma (Var "x") (Num 3))  (Mult (Num 2) (Num 3)))
 
 
@@ -293,15 +281,16 @@ fatorial = (Seq (Atrib (Var "y") (Num 1))
                        (Seq (Atrib (Var "y") (Mult (Var "y") (Var "x")))
                             (Atrib (Var "x") (Sub (Var "x") (Num 1))))))
 
+-- exemplo de programa usando Do-While
+-- Do (x=x+1) while (x<=5)
 programa1 :: C
 programa1 = DoWhile (Atrib (Var "x") (Soma (Var "x") (Num 1)))
                     (Leq (Var "x") (Num 5))
 
+-- exemplo de programa usando o If
+-- If (x!=y) then (testec1) else (y=y*2;z=y)
 programa2 :: C 
-programa2 = Seq (Atrib (Var "x")(Num 10)) (Atrib (Var "y")(Soma (Var "x")(Num 10)))
-
-programa3 :: C 
-programa3 = If (Not (Igual (Var "x")(Var "y"))) 
+programa2 = If (Not (Igual (Var "x")(Var "y"))) 
                testec1 --swap
                (Seq (Atrib (Var "y") (Mult (Var "y") (Num 2)))
                     (Atrib (Var "z") (Var "y")))
