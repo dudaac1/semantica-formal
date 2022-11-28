@@ -41,7 +41,8 @@ Repositório para armazenar os exercícios referentes a cadeira de Semântica Fo
   - exerc 7: transformar árvore em lista de inteiros (ordem não é importante).
 
 ## 📑 trabalhos
-- **trabalho 1:** implementar uma linguagem imperativa, com expressões aritméticas, booleanas e comandos (IF-ELSE, REPEAT, WHILE, DO-WHILE) usando a Semântica Operacional Big Step.
+- **trabalho 1:** implementar uma linguagem imperativa, com expressões aritméticas, booleanas e comandos (IF-ELSE, REPEAT, WHILE, DO-WHILE) usando a Semântica Operacional Big Step;
+- **trabalho 2:** a mesma coisa que o primeiro trabalho, porém utilizando a Semântica Operacional Small Step.
 
 ##
 _Desenvolvido por Eduarda A. Carvalho. Setembro/2022._
